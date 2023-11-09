@@ -1,6 +1,6 @@
 #!/bin/bash
 
-seznam="predmet.txt"
+seznam="predmeti.txt"
 
 
 mkdir -p studij
@@ -8,7 +8,6 @@ mkdir -p studij
 
 while read -r line 
 do
-   mkdir -p "studij/Sline"
-   mkdir -p "studij/$line/vaje"
-   mkdir -p "studij/$line/predava
-done < "Sseznam"
+   mkdir -p "studij/$line"
+   mkdir -p "studij/$line/{vaje,predavanja}"
+done < "$seznam"
