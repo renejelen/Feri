@@ -1,13 +1,10 @@
 #!/bin/bash
 
-seznam="predmeti.txt"
+base_directory="studij"
+academic_year="2023-24"
 
-
-mkdir -p studij
-
-
-while read -r line 
+while read -r line
 do
-   mkdir -p "studij/$line"
-   mkdir -p "studij/$line/{vaje,predavanja}"
-done < "$seznam"
+   mkdir -p "$base_directory/$academic_year/$line/vaje"
+   mkdir -p "$base_directory/$academic_year/$line/predavanja"
+done < "predmeti.txt"
