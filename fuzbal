@@ -1,0 +1,98 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+public class Igralec
+{
+    public string Ime { get; set; }
+    public string Priimek { get; set; }
+    public int LetoRojstva { get; set; }
+
+    public Igralec(string ime, string priimek, int letoRojstva)
+    {
+        Ime = ime;
+        Priimek = priimek;
+        LetoRojstva = letoRojstva;
+    }
+}
+
+public class Trener
+{
+    public string Ime { get; set; }
+    public string Priimek { get; set; }
+
+    public Trener(string ime, string priimek)
+    {
+        Ime = ime;
+        Priimek = priimek;
+    }
+}
+
+public class Ekipa
+{
+    public string Ime { get; set; }
+    public List<Igralec> Igralci { get; set; }
+    public Trener Trener { get; set; }
+
+    public Ekipa(string ime)
+    {
+        Ime = ime;
+        Igralci = new List<Igralec>();
+    }
+
+    public void DodajIgralca(Igralec igralec)
+    {
+        Igralci.Add(igralec);
+    }
+
+    public void OdstraniIgralca(string ime, string priimek)
+    {
+        Igralci.RemoveAll(i => i.Ime == ime && i.Priimek == priimek);
+    }
+
+    public double StarostEkipe()
+    {
+        int currentYear = DateTime.Now.Year;
+        return Igralci.Average(i => currentYear - i.LetoRojstva);
+    }
+
+    public string IzpisEkipe()
+    {
+        var igralciInfo = Igralci.Select(i => $"{i.Ime} {i.Priimek}");
+        return $"{Trener.Ime} {Trener.Priimek}, " + string.Join(", ", igralciInfo);
+    }
+}
+
+public class Program
+{
+    public static void Main()
+    {
+        // Creating players
+        Igralec igralec1 = new Igralec("Janez", "Novak", 1990);
+        Igralec igralec2 = new Igralec("Miha", "Kovač", 1985);
+        Igralec igralec3 = new Igralec("Ana", "Horvat", 1992);
+        
+        // Creating coaches
+        Trener trener1 = new Trener("Marko", "Pogacar");
+        Trener trener2 = new Trener("Petra", "Zupan");
+
+        // Creating teams
+        Ekipa ekipa1 = new Ekipa("Ekipa1");
+        ekipa1.Trener = trener1;
+        ekipa1.DodajIgralca(igralec1);
+        ekipa1.DodajIgralca(igralec2);
+
+        Ekipa ekipa2 = new Ekipa("Ekipa2");
+        ekipa2.Trener = trener2;
+        ekipa2.DodajIgralca(igralec1);
+        ekipa2.DodajIgralca(igralec2);
+        ekipa2.DodajIgralca(igralec3);
+
+        // Displaying team information
+        Console.WriteLine("Ekipa1 povprečna starost: " + ekipa1.StarostEkipe());
+        Console.WriteLine("Ekipa2 povprečna starost: " + ekipa2.StarostEkipe());
+
+        // Writing to file
+        System.IO.File.WriteAllText("vse_ekipe.txt", $"{ekipa1.Ime}, {ekipa1.IzpisEkipe()}\n{ekipa2.Ime}, {ekipa2.IzpisEkipe()}");
+    }
+}
