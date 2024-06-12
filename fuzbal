@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 public class Igralec
@@ -88,11 +89,28 @@ public class Program
         ekipa2.DodajIgralca(igralec2);
         ekipa2.DodajIgralca(igralec3);
 
-        // Displaying team information
+        // Displaying average age of teams
         Console.WriteLine("Ekipa1 povprečna starost: " + ekipa1.StarostEkipe());
         Console.WriteLine("Ekipa2 povprečna starost: " + ekipa2.StarostEkipe());
 
-        // Writing to file
-        System.IO.File.WriteAllText("vse_ekipe.txt", $"{ekipa1.Ime}, {ekipa1.IzpisEkipe()}\n{ekipa2.Ime}, {ekipa2.IzpisEkipe()}");
+        // Path to the file
+        string path = @"vse_ekipe.txt";
+
+        // Write to the file
+        using (StreamWriter sw = File.CreateText(path))
+        {
+            sw.WriteLine($"{ekipa1.Ime}, {ekipa1.IzpisEkipe()}");
+            sw.WriteLine($"{ekipa2.Ime}, {ekipa2.IzpisEkipe()}");
+        }
+
+        // Read from the file
+        using (StreamReader sr = File.OpenText(path))
+        {
+            string s;
+            while ((s = sr.ReadLine()) != null)
+            {
+                Console.WriteLine(s);
+            }
+        }
     }
 }
