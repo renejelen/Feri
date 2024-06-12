@@ -1,0 +1,164 @@
+public abstract class Dobitek
+{
+    public int SteviloIzrebanih { get; set; }
+    public abstract double Vrednost { get; }
+}
+
+public class AbsolutniDobitek : Dobitek
+{
+    public double VrednostDobitka { get; set; }
+    public override double Vrednost => VrednostDobitka;
+}
+
+public class RelativniDobitek : Dobitek
+{
+    public double OdstotekDobitnegaSklada { get; set; }
+    public double DobitniSklad { get; set; }
+    public override double Vrednost => DobitniSklad * (OdstotekDobitnegaSklada / 100);
+}
+
+public class Kombinacija
+{
+    public List<int> IzbranaStevila { get; set; }
+    public DateTime DatumVplacila { get; set; }
+
+    public Kombinacija(List<int> izbranaStevila, DateTime datumVplacila)
+    {
+        IzbranaStevila = izbranaStevila;
+        DatumVplacila = datumVplacila;
+    }
+}
+
+public class DobitnaKombinacija : Kombinacija
+{
+    public double VrednostDobitka { get; set; }
+    public DobitnaKombinacija(List<int> izbranaStevila, DateTime datumVplacila, double vrednostDobitka)
+        : base(izbranaStevila, datumVplacila)
+    {
+        VrednostDobitka = vrednostDobitka;
+    }
+}
+
+public class Zreb
+{
+    public DateTime CasovniZigZreba { get; set; }
+    public bool Izveden { get; set; }
+    public List<Kombinacija> VplacaneKombinacije { get; set; }
+    public double DobitniSklad { get; set; }
+    public List<DobitnaKombinacija> DobitneKombinacije { get; set; }
+    public List<int> IzzrebanaStevila { get; set; }
+
+    public Zreb(DateTime casovniZigZreba)
+    {
+        CasovniZigZreba = casovniZigZreba;
+        Izveden = false;
+        VplacaneKombinacije = new List<Kombinacija>();
+        DobitneKombinacije = new List<DobitnaKombinacija>();
+        IzzrebanaStevila = new List<int>();
+    }
+
+    public void VplaciloKombinacije(Kombinacija kombinacija)
+    {
+        VplacaneKombinacije.Add(kombinacija);
+    }
+
+    public void NakljucnaVplacila(int n, int maxStevilo)
+    {
+        Random rand = new Random();
+        for (int i = 0; i < n; i++)
+        {
+            var stevila = Enumerable.Range(1, maxStevilo).OrderBy(x => rand.Next()).Take(7).ToList();
+            VplaciloKombinacije(new Kombinacija(stevila, DateTime.Now));
+        }
+    }
+
+    public void Priprava(DateTime datumZreba)
+    {
+        CasovniZigZreba = datumZreba;
+    }
+
+    public void Izvedba()
+    {
+        DobitniSklad = 1000000 * 0.9 * VplacaneKombinacije.Count + DobitneKombinacije.Sum(d => d.VrednostDobitka);
+        if (DobitniSklad < 200000)
+            DobitniSklad = 200000;
+
+        Random rand = new Random();
+        IzzrebanaStevila = Enumerable.Range(1, 40).OrderBy(x => rand.Next()).Take(7).ToList();
+
+        var dobitneKombinacije = VplacaneKombinacije
+            .Where(k => k.IzbranaStevila.Intersect(IzzrebanaStevila).Count() >= 3)
+            .Select(k => new DobitnaKombinacija(k.IzbranaStevila, k.DatumVplacila, 50 * k.IzbranaStevila.Intersect(IzzrebanaStevila).Count()))
+            .ToList();
+
+        DobitneKombinacije.AddRange(dobitneKombinacije);
+    }
+}
+
+public class LoterijaSlovenije
+{
+    public List<Zreb> SeznamZrebov { get; set; }
+    public event Action<string> LoterijaObvestilo;
+
+    public LoterijaSlovenije()
+    {
+        SeznamZrebov = new List<Zreb>();
+    }
+
+    public void DodajZreb(Zreb zreb)
+    {
+        SeznamZrebov.Add(zreb);
+        LoterijaObvestilo?.Invoke($"Nov žreb dodan: {zreb.CasovniZigZreba}");
+    }
+
+    public Zreb PridobiZrebPoDatumu(DateTime datum)
+    {
+        return SeznamZrebov.FirstOrDefault(z => z.CasovniZigZreba == datum);
+    }
+}
+
+
+public class Oseba
+{
+    public string Ime { get; set; }
+    public string Priimek { get; set; }
+
+    public Oseba(string ime, string priimek)
+    {
+        Ime = ime;
+        Priimek = priimek;
+    }
+
+    public void PrijaviSeNaObvestilo(LoterijaSlovenije loterija, Action<string> obvestilo)
+    {
+        loterija.LoterijaObvestilo += obvestilo;
+    }
+}
+
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        LoterijaSlovenije loterija = new LoterijaSlovenije();
+
+        Oseba janez = new Oseba("Janez", "Novak");
+        janez.PrijaviSeNaObvestilo(loterija, Obvestilo);
+
+        Zreb zreb1 = new Zreb(DateTime.Parse("2022-05-01 20:00"));
+        zreb1.NakljucnaVplacila(100000, 40);
+        zreb1.Izvedba();
+
+        loterija.DodajZreb(zreb1);
+
+        Zreb zreb2 = new Zreb(DateTime.Parse("2022-06-01 20:00"));
+        zreb2.NakljucnaVplacila(100000, 40);
+        zreb2.Izvedba();
+
+        loterija.DodajZreb(zreb2);
+    }
+
+    public static void Obvestilo(string message)
+    {
+        Console.WriteLine(message);
+    }
+}
