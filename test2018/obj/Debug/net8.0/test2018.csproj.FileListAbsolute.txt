@@ -1,0 +1,14 @@
+D:\FERI\NPR\test2018\bin\Debug\net8.0\test2018.exe
+D:\FERI\NPR\test2018\bin\Debug\net8.0\test2018.deps.json
+D:\FERI\NPR\test2018\bin\Debug\net8.0\test2018.runtimeconfig.json
+D:\FERI\NPR\test2018\bin\Debug\net8.0\test2018.dll
+D:\FERI\NPR\test2018\bin\Debug\net8.0\test2018.pdb
+D:\FERI\NPR\test2018\obj\Debug\net8.0\test2018.GeneratedMSBuildEditorConfig.editorconfig
+D:\FERI\NPR\test2018\obj\Debug\net8.0\test2018.AssemblyInfoInputs.cache
+D:\FERI\NPR\test2018\obj\Debug\net8.0\test2018.AssemblyInfo.cs
+D:\FERI\NPR\test2018\obj\Debug\net8.0\test2018.csproj.CoreCompileInputs.cache
+D:\FERI\NPR\test2018\obj\Debug\net8.0\test2018.dll
+D:\FERI\NPR\test2018\obj\Debug\net8.0\refint\test2018.dll
+D:\FERI\NPR\test2018\obj\Debug\net8.0\test2018.pdb
+D:\FERI\NPR\test2018\obj\Debug\net8.0\test2018.genruntimeconfig.cache
+D:\FERI\NPR\test2018\obj\Debug\net8.0\ref\test2018.dll
