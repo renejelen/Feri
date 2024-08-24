@@ -1,0 +1,14 @@
+D:\FERI\NPR\Rene_Jelen_Naloga8\bin\Debug\net8.0\Rene_Jelen_Naloga8.exe
+D:\FERI\NPR\Rene_Jelen_Naloga8\bin\Debug\net8.0\Rene_Jelen_Naloga8.deps.json
+D:\FERI\NPR\Rene_Jelen_Naloga8\bin\Debug\net8.0\Rene_Jelen_Naloga8.runtimeconfig.json
+D:\FERI\NPR\Rene_Jelen_Naloga8\bin\Debug\net8.0\Rene_Jelen_Naloga8.dll
+D:\FERI\NPR\Rene_Jelen_Naloga8\bin\Debug\net8.0\Rene_Jelen_Naloga8.pdb
+D:\FERI\NPR\Rene_Jelen_Naloga8\obj\Debug\net8.0\Rene_Jelen_Naloga8.GeneratedMSBuildEditorConfig.editorconfig
+D:\FERI\NPR\Rene_Jelen_Naloga8\obj\Debug\net8.0\Rene_Jelen_Naloga8.AssemblyInfoInputs.cache
+D:\FERI\NPR\Rene_Jelen_Naloga8\obj\Debug\net8.0\Rene_Jelen_Naloga8.AssemblyInfo.cs
+D:\FERI\NPR\Rene_Jelen_Naloga8\obj\Debug\net8.0\Rene_Jelen_Naloga8.csproj.CoreCompileInputs.cache
+D:\FERI\NPR\Rene_Jelen_Naloga8\obj\Debug\net8.0\Rene_Jelen_Naloga8.dll
+D:\FERI\NPR\Rene_Jelen_Naloga8\obj\Debug\net8.0\refint\Rene_Jelen_Naloga8.dll
+D:\FERI\NPR\Rene_Jelen_Naloga8\obj\Debug\net8.0\Rene_Jelen_Naloga8.pdb
+D:\FERI\NPR\Rene_Jelen_Naloga8\obj\Debug\net8.0\Rene_Jelen_Naloga8.genruntimeconfig.cache
+D:\FERI\NPR\Rene_Jelen_Naloga8\obj\Debug\net8.0\ref\Rene_Jelen_Naloga8.dll
