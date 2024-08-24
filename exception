@@ -1,0 +1,89 @@
+using System;
+
+public class NapakaPriProdajiKarte : Exception
+{
+    public NapakaPriProdajiKarte() : base() { }
+    public NapakaPriProdajiKarte(string message) : base(message) { }
+    public NapakaPriProdajiKarte(string message, Exception inner) : base(message, inner) { }
+}
+
+public class DogodekRazprodanException : NapakaPriProdajiKarte
+{
+    public DogodekRazprodanException() : base("Dogodek je razprodan.") { }
+    public DogodekRazprodanException(string message) : base(message) { }
+    public DogodekRazprodanException(string message, Exception inner) : base(message, inner) { }
+}
+
+public class CSVDatotekaNapacneOblikeException : Exception
+{
+    public CSVDatotekaNapacneOblikeException() : base("CSV datoteka ni pravilne oblike.") { }
+    public CSVDatotekaNapacneOblikeException(string message) : base(message) { }
+    public CSVDatotekaNapacneOblikeException(string message, Exception inner) : base(message, inner) { }
+}
+
+public class ProdajaKart
+{
+    public void ProdajKarto(int steviloProstihMest)
+    {
+        if (steviloProstihMest <= 0)
+        {
+            throw new DogodekRazprodanException();
+        }
+        
+        // Koda za prodajo karte...
+        // Če pride do kakšne druge napake, se sproži splošna NapakaPriProdajiKarte
+        try
+        {
+            // Predstavljajmo si, da pride do napake pri prodaji
+            throw new Exception("Prišlo je do nepričakovane napake pri prodaji.");
+        }
+        catch (Exception ex)
+        {
+            throw new NapakaPriProdajiKarte("Prodaja karte ni uspela.", ex);
+        }
+    }
+
+    public void PreberiCSV(string potDoDatoteke)
+    {
+        // Predstavljajmo si, da preverjamo format datoteke in ni pravilna
+        bool isPravilnaOblika = false;  // Nek pogoj
+
+        if (!isPravilnaOblika)
+        {
+            throw new CSVDatotekaNapacneOblikeException("CSV datoteka ima napačen format pri " + potDoDatoteke);
+        }
+        
+        // Koda za branje datoteke...
+    }
+}
+
+// Primer uporabe:
+class Program
+{
+    static void Main()
+    {
+        var prodaja = new ProdajaKart();
+
+        try
+        {
+            prodaja.ProdajKarto(0);
+        }
+        catch (DogodekRazprodanException ex)
+        {
+            Console.WriteLine("Napaka: " + ex.Message);
+        }
+        catch (NapakaPriProdajiKarte ex)
+        {
+            Console.WriteLine("Napaka pri prodaji karte: " + ex.Message);
+        }
+
+        try
+        {
+            prodaja.PreberiCSV("pot/do/datoteke.csv");
+        }
+        catch (CSVDatotekaNapacneOblikeException ex)
+        {
+            Console.WriteLine("Napaka: " + ex.Message);
+        }
+    }
+}
