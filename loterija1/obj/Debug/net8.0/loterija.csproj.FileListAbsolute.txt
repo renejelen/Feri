@@ -1,0 +1,14 @@
+D:\FERI\NPR\loterija\bin\Debug\net8.0\loterija.exe
+D:\FERI\NPR\loterija\bin\Debug\net8.0\loterija.deps.json
+D:\FERI\NPR\loterija\bin\Debug\net8.0\loterija.runtimeconfig.json
+D:\FERI\NPR\loterija\bin\Debug\net8.0\loterija.dll
+D:\FERI\NPR\loterija\bin\Debug\net8.0\loterija.pdb
+D:\FERI\NPR\loterija\obj\Debug\net8.0\loterija.GeneratedMSBuildEditorConfig.editorconfig
+D:\FERI\NPR\loterija\obj\Debug\net8.0\loterija.AssemblyInfoInputs.cache
+D:\FERI\NPR\loterija\obj\Debug\net8.0\loterija.AssemblyInfo.cs
+D:\FERI\NPR\loterija\obj\Debug\net8.0\loterija.csproj.CoreCompileInputs.cache
+D:\FERI\NPR\loterija\obj\Debug\net8.0\loterija.dll
+D:\FERI\NPR\loterija\obj\Debug\net8.0\refint\loterija.dll
+D:\FERI\NPR\loterija\obj\Debug\net8.0\loterija.pdb
+D:\FERI\NPR\loterija\obj\Debug\net8.0\loterija.genruntimeconfig.cache
+D:\FERI\NPR\loterija\obj\Debug\net8.0\ref\loterija.dll
