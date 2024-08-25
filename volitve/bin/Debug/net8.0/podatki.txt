@@ -1,0 +1,19 @@
+Party: Liberal Party
+Party: Conservative Party
+Party: Green Party
+
+Candidate: John Smith, 45, Liberal Party
+Candidate: Emily Davis, 50, Liberal Party
+Candidate: Michael Brown, 60, Conservative Party
+Candidate: Sarah Johnson, 38, Conservative Party
+Candidate: James Wilson, 55, Green Party
+Candidate: Laura White, 42, Green Party
+
+Voter: Adam Black, 30, kandidat1, Male
+Voter: Betty Green, 25, kandidat1, Female
+Voter: Charlie Blue, 40, kandidat1, Male
+Voter: Diana Red, 35, kandidat1, Female
+Voter: Ethan Yellow, 28, kandidat1, Male
+Voter: Fiona Brown, 32, kandidat1, Female
+Voter: George Pink, 45, kandidat1, Male
+Voter: Hannah White, 50, kandidat1, Female
